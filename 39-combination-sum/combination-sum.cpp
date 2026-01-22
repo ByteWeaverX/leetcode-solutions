@@ -20,7 +20,7 @@ public:
         int index=0;
         vector<vector<int>> ans;
         vector<int> output;
-        sort(candidates.begin(),candidates.end());
+        
         solve(candidates,ans,output,index,target);
         return ans ;
     }
