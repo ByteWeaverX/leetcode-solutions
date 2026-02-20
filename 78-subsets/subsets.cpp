@@ -1,16 +1,14 @@
 class Solution {
 private:
-void solve(vector<int>& nums, vector<int> output, vector<vector<int>>& ans, int index){
+void solve(vector<int> nums, vector<vector<int>>& ans, vector<int> output, int index){
     if(index>=nums.size()){
         ans.push_back(output);
         return;
     }
-
-    solve(nums, output, ans, index+1);
-    
-    int element= nums[index];
+    solve(nums, ans, output, index+1);
+    int element = nums[index];
     output.push_back(element);
-    solve(nums, output, ans, index+1);
+    solve(nums, ans, output, index+1);
     
 }
 public:
@@ -18,7 +16,7 @@ public:
         vector<int> output;
         vector<vector<int>> ans;
         int index = 0 ;
-        solve(nums, output, ans, index);
+        solve(nums, ans, output, index);
         return ans;
     }
 };
