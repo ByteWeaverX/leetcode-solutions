@@ -2,18 +2,23 @@ class Solution {
 public:
     bool isValid(string s) {
         stack<char> stk;
-        unordered_map<char, char> pairs = {{')', '('}, {'}', '{'}, {']', '['}};
-
-        for (char ch : s) {
-            if (pairs.count(ch)) { 
-                if (stk.empty() || stk.top() != pairs[ch]) return false;
-                stk.pop();  
-            } else {  
+        for(int i = 0 ; i < s.length(); i++){
+            char ch = s[i];
+            if(ch == '(' || ch == '{' || ch == '['){
                 stk.push(ch);
             }
+            else{
+                if(!stk.empty()){
+                    char top = stk.top();
+                    if(ch == ')' && top == '(') stk.pop();
+                    else if(ch == '}' && top == '{') stk.pop();
+                    else if(ch == ']' && top == '[') stk.pop();
+                    else return false;
+                }
+                else return false;
+            }
         }
-
-        return stk.empty();  
-        
+        if(stk.empty()) return true;
+        return false;
     }
 };
